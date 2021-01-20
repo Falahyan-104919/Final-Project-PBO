@@ -77,7 +77,7 @@ public class UIController implements Initializable {
     private TextField menuQtyP5;
 
     @FXML
-    private Button menuAddPrinter5;
+    private Button menuAddP5;
 
     @FXML
     private TextField menuQtyL1;
