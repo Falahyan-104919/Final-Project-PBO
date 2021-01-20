@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="489.0" prefWidth="768.0" style="-fx-background-color: ff9500;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finalprojectpbo.UIController">
+   <children>
+      <Pane layoutX="121.0" layoutY="91.0" prefHeight="375.0" prefWidth="550.0" style="-fx-background-color: ffaa00;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text layoutX="34.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INVOICE PEMBELIAN" wrappingWidth="345.77880859375">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Text>
+            <Text layoutX="240.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No : " />
+            <TextField fx:id="noInvoiceOrder" disable="true" layoutX="264.0" layoutY="32.0" prefHeight="10.0" prefWidth="95.0">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </TextField>
+            <VBox layoutX="5.0" layoutY="57.0" prefHeight="437.0" prefWidth="356.0">
+               <children>
+                  <Pane prefHeight="30.0" prefWidth="356.0">
+                     <children>
+                        <Text layoutX="9.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NAMA : ">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="nameCustInvoiceOrder" disable="true" layoutX="78.0" layoutY="2.0" prefHeight="2.0" prefWidth="276.0" />
+                     </children>
+                  </Pane>
+                  <Separator prefWidth="200.0" />
+                  <Pane prefHeight="25.0" prefWidth="356.0">
+                     <children>
+                        <Text layoutX="8.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DAFTAR PEMBELIAN">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+                  <Separator layoutX="10.0" layoutY="35.0" prefWidth="200.0" />
+                  <Pane layoutX="10.0" layoutY="210.0" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="InvoiceTableOrder" layoutX="2.0" layoutY="2.0" prefHeight="195.0" prefWidth="355.0">
+                          <columns>
+                            <TableColumn fx:id="InvoiceTableOrderColItem" prefWidth="166.0" text="ITEM" />
+                            <TableColumn fx:id="InvoiceTableOrderColPrice" prefWidth="97.0" text="HARGA" />
+                              <TableColumn fx:id="InvoiceTableOrderColQty" minWidth="0.0" prefWidth="89.66665649414062" text="JUMLAH" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </Pane>
+                  <Separator prefWidth="200.0" />
+                  <Pane prefHeight="30.0" prefWidth="356.0">
+                     <children>
+                        <Text layoutX="2.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL HARGA :">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="InvoiceTotalPrice" disable="true" editable="false" layoutX="121.0" layoutY="1.0" prefHeight="25.0" prefWidth="230.0" />
+                     </children>
+                  </Pane>
+                  <Separator layoutX="10.0" layoutY="271.0" prefWidth="200.0" />
+                  <Pane layoutX="10.0" layoutY="274.0" prefHeight="59.0" prefWidth="356.0">
+                     <children>
+                        <Text layoutX="2.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BAYAR :">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="InvoicePay" layoutX="68.0" layoutY="1.0" prefHeight="25.0" prefWidth="283.0" />
+                        <Button fx:id="InvoiceButtonPay" layoutX="297.0" layoutY="30.0" mnemonicParsing="false" onAction="#handleButtonInvoicePay" style="-fx-background-color: #0077B6;" text="BAYAR" />
+                     </children>
+                  </Pane>
+                  <Separator layoutX="10.0" layoutY="304.0" prefWidth="200.0" />
+                  <Pane layoutX="10.0" layoutY="274.0" prefHeight="30.0" prefWidth="356.0">
+                     <children>
+                        <Text layoutX="2.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="KEMBALIAN :">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="InvoiceChange" disable="true" layoutX="101.0" layoutY="1.0" prefHeight="25.0" prefWidth="250.0" />
+                     </children>
+                  </Pane>
+                  <Separator layoutX="10.0" layoutY="366.0" prefWidth="200.0" />
+                  <Pane prefHeight="30.0" prefWidth="356.0">
+                     <children>
+                        <Button fx:id="InvoiceButtonExit" layoutX="133.0" layoutY="6.0" mnemonicParsing="false" onAction="#handleButtonInvoiceExit" style="-fx-background-color: #FF312E;" text="KELUAR">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+            <Text layoutX="14.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No : " />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
