@@ -21,6 +21,7 @@ To view the diagrams below install mermaid-diagram plugin at https://github.com/
 # Class Diagram
 
 classDiagram
+    
     Invoice "1"--o"*"  Barang : has
     Barang <|-- Laptop
     Barang <|-- Monitor
