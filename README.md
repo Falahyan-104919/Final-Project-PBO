@@ -1,5 +1,5 @@
 # Final-Project-PBO
-<link></link>
+
 
 classDiagram
     Invoice --o  Barang : has
@@ -85,7 +85,7 @@ class Invoice{
     }
     
     test
-    <link></link>
+  
     class Printer{
       -String jenis_printer
       -Boolean scan
