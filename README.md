@@ -1,5 +1,5 @@
 # Final-Project-PBO
-<link>tulis sini</link>
+<link></link>
 
 classDiagram
     Invoice --o  Barang : has
@@ -83,6 +83,9 @@ class Invoice{
       +void setRefresh_rate(int refresh_rate)
       +String shortSpec()
     }
+    
+    test
+    <link></link>
     class Printer{
       -String jenis_printer
       -Boolean scan
