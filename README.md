@@ -10,9 +10,9 @@ Libraries and Tools of this project:
 - mysql server (xampp recomended)
 - netbean editor
 - VS Code installed plugin
- * Markdown All in one
- * Markdown preview
- * Live Server
+ - Markdown All in one
+ - Markdown preview
+ - Live Server
 
 #Desain
 To view the diagrams below install mermaid-diagram plugin at https://github.com/Redisrupt/mermaid-diagrams
