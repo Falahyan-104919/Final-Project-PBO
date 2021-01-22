@@ -119,6 +119,7 @@ classDiagram
     
 # ER Diagram
 erDiagram
+
           Barang ||--|| Laptop : is
           Barang ||--|| Monitor : is
           Barang ||--|| Printer : is
@@ -156,6 +157,7 @@ erDiagram
 # Design Class Diagram for JavaFX and Database
     
   classDiagram
+  
     DataModel <-- UIController
     UIController <.. formCust : Form Control 
     DBHelper <-- DataModel
