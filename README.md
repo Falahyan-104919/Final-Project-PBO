@@ -1,8 +1,8 @@
 # Final Project Mata Kuliah Pemrograman Berbasis Objek
 Anggota Kelompok:
--1917051020 Nopri Wiratama Friliansa
--1917051045 Muhammad Bintang Firdaus
--1917051049 Falahyan
+- 1917051020 Nopri Wiratama Friliansa
+- 1917051045 Muhammad Bintang Firdaus
+- 1917051049 Falahyan
 
 
 # Invoice System
