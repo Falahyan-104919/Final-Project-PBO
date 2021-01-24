@@ -146,28 +146,28 @@ public class UIController implements Initializable {
     private Button InvoiceButtonExit;
 
     @FXML
-    private TableView<Invoice> menuOrderList;
+    private TableView<ListOrder> menuOrderList;
 
     @FXML
-    private TableColumn<Invoice, String> menuOrderListColItem;
+    private TableColumn<ListOrder, String> menuOrderListColItem;
 
     @FXML
-    private TableColumn<Invoice, Integer> menuOrderListColPrice;
+    private TableColumn<ListOrder, Integer> menuOrderListColPrice;
 
     @FXML
-    private TableColumn<Invoice, Integer> menuOrderListColQty;
+    private TableColumn<ListOrder, Integer> menuOrderListColQty;
     
     @FXML
-    private TableView<Invoice> InvoiceTableOrder;
+    private TableView<ListOrder> InvoiceTableOrder;
 
     @FXML
-    private TableColumn<Invoice, String> InvoiceTableOrderColItem;
+    private TableColumn<ListOrder, String> InvoiceTableOrderColItem;
 
     @FXML
-    private TableColumn<Invoice, Integer> InvoiceTableOrderColPrice;
+    private TableColumn<ListOrder, Integer> InvoiceTableOrderColPrice;
 
     @FXML
-    private TableColumn<Invoice, Integer> InvoiceTableOrderColQty;
+    private TableColumn<ListOrder, Integer> InvoiceTableOrderColQty;
 
 
     @FXML
@@ -191,6 +191,8 @@ public class UIController implements Initializable {
         int qty = Integer.parseInt(menuQtyL1.getText());
         try {
             dm.tambahItem(dm.nextInvoiceID()-1, 1211000, qty);
+            update();
+            menuQtyL1.setText("");
         } catch (SQLException ex) {
             Logger.getLogger(UIController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -198,17 +200,11 @@ public class UIController implements Initializable {
 
     @FXML
     void handleButtonAddL2(ActionEvent event) throws SQLException {
-         menuQtyL2.getText();
-         Laptop L2 = new Laptop(dm.nextLaptopID(),
-                "MSI WP565 ",
-                "MSI",
-                Integer.parseInt("Rp. 73.999.000"),
-                "Intel Core i9-8950HK",
-                "NVIDIA® RTX2080 8GB GDDR6",
-                Integer.parseInt("64GB"),
-                Integer.parseInt("2TB"));
+        int qty = Integer.parseInt(menuQtyL2.getText());
         try {
-            dm.tambahBarang(L2);
+            dm.tambahItem(dm.nextInvoiceID()-1, 1211001, qty);
+            update();
+            menuQtyL2.setText("");
         } catch (SQLException ex) {
             Logger.getLogger(UIController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -216,17 +212,11 @@ public class UIController implements Initializable {
 
     @FXML
     void handleButtonAddL3(ActionEvent event) {
-         menuQtyL3.getText();
-         Laptop L3 = new Laptop(10003,
-                "Asus ROG Chimera G703GI",
-                "Asus",
-                Integer.parseInt("Rp. 69.999.000"),
-                "Intel Core i9-8950HK",
-                "NVIDIA® RTX2080 8GB GDDR6",
-                Integer.parseInt("64GB"),
-                Integer.parseInt("2TB"));
+         int qty = Integer.parseInt(menuQtyL3.getText());
         try {
-            dm.tambahBarang(L3);
+            dm.tambahItem(dm.nextInvoiceID()-1, 1211002, qty);
+            update();
+            menuQtyL3.setText("");
         } catch (SQLException ex) {
             Logger.getLogger(UIController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -234,17 +224,11 @@ public class UIController implements Initializable {
 
     @FXML
     void handleButtonAddL4(ActionEvent event) {
-        menuQtyL4.getText(); 
-        Laptop L4 = new Laptop(10004,
-                "Acer Predator Helios PH717",
-                "Acer",
-                Integer.parseInt("Rp. 67.999.000"),
-                "Intel Core i9-8950HK",
-                "NVIDIA® RTX2080 8GB GDDR6",
-                Integer.parseInt("64GB"),
-                Integer.parseInt("2TB"));
+        int qty = Integer.parseInt(menuQtyL4.getText());
         try {
-            dm.tambahBarang(L4);
+            dm.tambahItem(dm.nextInvoiceID()-1, 1211003, qty);
+            update();
+            menuQtyL4.setText("");
         } catch (SQLException ex) {
             Logger.getLogger(UIController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -252,17 +236,11 @@ public class UIController implements Initializable {
 
     @FXML
     void handleButtonAddL5(ActionEvent event) {
-        menuQtyL5.getText(); 
-        Laptop L5 = new Laptop(10005,
-                "Alienware 17-R4",
-                "Asus",
-                Integer.parseInt("Rp. 34.999.000"),
-                "Intel Core i9-8950HK",
-                "NVIDIA® RTX2080 8GB GDDR6",
-                Integer.parseInt("64GB"),
-                Integer.parseInt("2TB"));
+        int qty = Integer.parseInt(menuQtyL5.getText());
         try {
-            dm.tambahBarang(L5);
+            dm.tambahItem(dm.nextInvoiceID()-1, 1211004, qty);
+            update();
+            menuQtyL5.setText("");
         } catch (SQLException ex) {
             Logger.getLogger(UIController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -270,18 +248,11 @@ public class UIController implements Initializable {
 
     @FXML
     void handleButtonAddM1(ActionEvent event) {
-        menuQtyM1.getText(); 
-        Monitor M1 = new Monitor(
-                20001,
-                "Benq Zowie XL2740",
-                "Benq",
-                Integer.parseInt("Rp. 9.385.000"),
-                Integer.parseInt("27 inch" ),
-                "Full HD (1920x1080)",
-                Integer.parseInt("240Hz"),
-                "TN");
+        int qty = Integer.parseInt(menuQtyM1.getText());
         try {
-            dm.tambahBarang(M1);
+            dm.tambahItem(dm.nextInvoiceID()-1, 1212000, qty);
+            update();
+            menuQtyM1.setText("");
         } catch (SQLException ex) {
             Logger.getLogger(UIController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -289,18 +260,11 @@ public class UIController implements Initializable {
 
     @FXML
     void handleButtonAddM2(ActionEvent event) {
-        menuQtyM2.getText(); 
-        Monitor M2 = new Monitor(
-                20002,
-                "AOC AGON AG271QX",
-                "AOC",
-                Integer.parseInt("Rp. 7.599.000"),
-                Integer.parseInt("27 inch" ),
-                "Full HD (2560x1440)",
-                Integer.parseInt("144Hz"),
-                "TN");
+        int qty = Integer.parseInt(menuQtyM2.getText());
         try {
-            dm.tambahBarang(M2);
+            dm.tambahItem(dm.nextInvoiceID()-1, 1212001, qty);
+            update();
+            menuQtyM2.setText("");
         } catch (SQLException ex) {
             Logger.getLogger(UIController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -308,18 +272,11 @@ public class UIController implements Initializable {
 
     @FXML
     void handleButtonAddM3(ActionEvent event) {
-        menuQtyM3.getText(); 
-        Monitor M3 = new Monitor(
-                20003,
-                "Acer Predator XB241H",
-                "Acer",
-                Integer.parseInt("Rp. 7.370.000"),
-                Integer.parseInt("27 inch" ),
-                "Full HD (1920x1080)",
-                Integer.parseInt("144Hz"),
-                "TN Film");
+        int qty = Integer.parseInt(menuQtyM3.getText());
         try {
-            dm.tambahBarang(M3);
+            dm.tambahItem(dm.nextInvoiceID()-1, 1212002, qty);
+            update();
+            menuQtyM3.setText("");
         } catch (SQLException ex) {
             Logger.getLogger(UIController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -327,18 +284,11 @@ public class UIController implements Initializable {
 
     @FXML
     void handleButtonAddM4(ActionEvent event) {
-        menuQtyM4.getText(); 
-        Monitor M4 = new Monitor(
-                20004,
-                "Dell S2417DG",
-                "Benq",
-                Integer.parseInt("Rp. 7.000.000"),
-                Integer.parseInt("24 inch" ),
-                "Full HD (2560x1440)",
-                Integer.parseInt("160Hz"),
-                "TN");
+        int qty = Integer.parseInt(menuQtyM4.getText());
         try {
-            dm.tambahBarang(M4);
+            dm.tambahItem(dm.nextInvoiceID()-1, 1212003, qty);
+            update();
+            menuQtyM4.setText("");
         } catch (SQLException ex) {
             Logger.getLogger(UIController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -346,18 +296,11 @@ public class UIController implements Initializable {
 
     @FXML
     void handleButtonAddM5(ActionEvent event) {
-        menuQtyM5.getText(); 
-        Monitor M5 = new Monitor(
-                20005,
-                "MSI Optix MAG24C",
-                "Benq",
-                Integer.parseInt("Rp. 4.850.000"),
-                Integer.parseInt("23.6 inch" ),
-                "Full HD (1920 x 1080)",
-                Integer.parseInt("144Hz"),
-                "VA");
+        int qty = Integer.parseInt(menuQtyM5.getText());
         try {
-            dm.tambahBarang(M5);
+            dm.tambahItem(dm.nextInvoiceID()-1, 1212004, qty);
+            update();
+            menuQtyM5.setText("");
         } catch (SQLException ex) {
             Logger.getLogger(UIController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -365,16 +308,11 @@ public class UIController implements Initializable {
 
     @FXML
     void handleButtonAddP1(ActionEvent event) {
-        menuQtyP1.getText(); 
-        Printer P1 = new Printer(30001,
-                    "Epson L310",
-                    "Epson",
-                     Integer.parseInt("Rp. 1.730.000"),
-                    "Printer Inkjet",
-                    Integer.parseInt("Black/White 33 ppm & Color 15 ppm"),
-                    Boolean.FALSE);
+        int qty = Integer.parseInt(menuQtyP1.getText());
         try {
-            dm.tambahBarang(P1);
+            dm.tambahItem(dm.nextInvoiceID()-1, 1213000, qty);
+            update();
+            menuQtyP1.setText("");
         } catch (SQLException ex) {
             Logger.getLogger(UIController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -382,16 +320,11 @@ public class UIController implements Initializable {
     
     @FXML
     void handleButtonP2(ActionEvent event) {
-        menuQtyP2.getText(); 
-        Printer P2 = new Printer(30002,
-                    "Canon Pixma MG2570",
-                    "Canon",
-                     Integer.parseInt("Rp. 675.000"),
-                    "Printer Inkjet",
-                    Integer.parseInt("Black/White 8.0 ipm & Color 4.0 ipm"),
-                    Boolean.TRUE);
+        int qty = Integer.parseInt(menuQtyP2.getText());
         try {
-            dm.tambahBarang(P2);
+            dm.tambahItem(dm.nextInvoiceID()-1, 1213001, qty);
+            update();
+            menuQtyP2.setText("");
         } catch (SQLException ex) {
             Logger.getLogger(UIController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -399,16 +332,11 @@ public class UIController implements Initializable {
     
     @FXML
     void handleButtonAddP3(ActionEvent event) {
-        menuQtyP3.getText(); 
-        Printer P3 = new Printer(30003,
-                    "HP DeskJet 1010",
-                    "HP",
-                     Integer.parseInt("Rp. 415.000"),
-                    "Printer Inkjet",
-                    Integer.parseInt("Black/White 7 ppm & Color 4 ppm"),
-                    Boolean.TRUE);
+        int qty = Integer.parseInt(menuQtyP3.getText());
         try {
-            dm.tambahBarang(P3);
+            dm.tambahItem(dm.nextInvoiceID()-1, 1213002, qty);
+            update();
+            menuQtyP3.setText("");
         } catch (SQLException ex) {
             Logger.getLogger(UIController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -416,16 +344,11 @@ public class UIController implements Initializable {
 
     @FXML
     void handleButtonAddP4(ActionEvent event) {
-        menuQtyP4.getText(); 
-        Printer P4 = new Printer(30004,
-                    "HP LaserJet Pro M15A",
-                    "HP",
-                     Integer.parseInt("Rp. 1.245.000"),
-                    "Laser Monochrome Printer",
-                    Integer.parseInt("Black/White & Color 20ppm"),
-                    Boolean.FALSE);
+        int qty = Integer.parseInt(menuQtyP4.getText());
         try {
-            dm.tambahBarang(P4);
+            dm.tambahItem(dm.nextInvoiceID()-1, 1213003, qty);
+            update();
+            menuQtyP4.setText("");
         } catch (SQLException ex) {
             Logger.getLogger(UIController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -433,16 +356,11 @@ public class UIController implements Initializable {
 
     @FXML
     void handleButtonAddP5(ActionEvent event) {
-        menuQtyP5.getText(); 
-        Printer P5 = new Printer(30005,
-                    "Canon imageClass LBP6030w",
-                    "Canon",
-                     Integer.parseInt("Rp. 1.479.000"),
-                    "Laser Monochrome Printer",
-                    Integer.parseInt("Black/White 19 ppm & Color 18 ppm"),
-                    Boolean.FALSE);
+        int qty = Integer.parseInt(menuQtyP5.getText());
         try {
-            dm.tambahBarang(P5);
+            dm.tambahItem(dm.nextInvoiceID()-1, 1213004, qty);
+            update();
+            menuQtyP5.setText("");
         } catch (SQLException ex) {
             Logger.getLogger(UIController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -493,18 +411,11 @@ public class UIController implements Initializable {
     }
     
     void update() throws SQLException{
-        ArrayList<Integer> list_id =  dm.getListIDBarang(dm.nextInvoiceID()-1);
-        ObservableList<IntegerProperty> list_jumlah =  dm.getListJmlBarang(dm.nextInvoiceID()-1);
-        
-//        ObservableList<Barang> list_barnag = dm.getIndividualHolders();
-//        colHolderID.setCellValueFactory(new PropertyValueFactory<>("holderID"));
-//        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
-//        colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
-//        colGender.setCellValueFactory(new PropertyValueFactory<>("gender"));
-//        colBirthdate.setCellValueFactory(new PropertyValueFactory<>("birthdate"));
-//        colNumAccounts.setCellValueFactory(new PropertyValueFactory<>("numAccounts"));
-//        tblAccHolder.setItems(null);
-//        tblAccHolder.setItems(data);
-//        btnAddAccount.setDisable(true);
+        ObservableList<ListOrder> list_order = dm.getListOrder(dm.nextInvoiceID()-1);
+        menuOrderListColItem.setCellValueFactory(new PropertyValueFactory<>("nama_barang"));
+        menuOrderListColQty.setCellValueFactory(new PropertyValueFactory<>("jumlah"));
+        menuOrderListColPrice.setCellValueFactory(new PropertyValueFactory<>("harga"));
+        menuOrderList.setItems(null);
+        menuOrderList.setItems(list_order);
     }
 }

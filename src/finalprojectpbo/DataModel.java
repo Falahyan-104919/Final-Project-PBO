@@ -97,25 +97,39 @@ public class DataModel {
         
     }
     
-    public ArrayList<Integer> getListIDBarang(int id_invoice)throws SQLException{
-        ArrayList<Integer> data = new ArrayList<>();
-        String sql="SELECT id_barang FROM items WHERE id_invoice="+id_invoice;
-        
-        ResultSet rs = conn.createStatement().executeQuery(sql);
-        while (rs.next()){
-            data.add(rs.getInt(1));
-        }
-        return data;
-    }
-    public ObservableList<IntegerProperty> getListJmlBarang(int id_invoice)throws SQLException{
-        ObservableList<IntegerProperty> data = FXCollections.observableArrayList();
-        String sql="SELECT jumlah FROM items WHERE id_invoice="+id_invoice;
-        
-        ResultSet rs = conn.createStatement().executeQuery(sql);
-        IntegerProperty tmp;
-        while (rs.next()){
-            tmp = new SimpleIntegerProperty(rs.getInt(1));
-            data.add(tmp);
+//    public ArrayList<Integer> getListIDBarang(int id_invoice)throws SQLException{
+//        ArrayList<Integer> data = new ArrayList<>();
+//        String sql="SELECT id_barang FROM items WHERE id_invoice="+id_invoice;
+//        
+//        ResultSet rs = conn.createStatement().executeQuery(sql);
+//        while (rs.next()){
+//            data.add(rs.getInt(1));
+//        }
+//        return data;
+//    }
+//    public ObservableList<IntegerProperty> getListJmlBarang(int id_invoice)throws SQLException{
+//        ObservableList<IntegerProperty> data = FXCollections.observableArrayList();
+//        String sql="SELECT jumlah FROM items WHERE id_invoice="+id_invoice;
+//        
+//        ResultSet rs = conn.createStatement().executeQuery(sql);
+//        IntegerProperty tmp;
+//        while (rs.next()){
+//            tmp = new SimpleIntegerProperty(rs.getInt(1));
+//            data.add(tmp);
+//        }
+//        return data;
+//    }
+    
+    public ObservableList<ListOrder> getListOrder(int id_invoice) throws SQLException{
+        ObservableList<ListOrder> data = FXCollections.observableArrayList();
+        String sql1="SELECT id_barang, jumlah FROM items WHERE id_invoice="+id_invoice;
+        ResultSet rs1 = conn.createStatement().executeQuery(sql1);
+        while (rs1.next()){
+            String sql2 = "SELECT nama_barang, harga FROM barang WHERE id="+rs1.getInt(1);
+            ResultSet rs2 = conn.createStatement().executeQuery(sql2);
+            while(rs2.next()){
+                data.add(new ListOrder(rs2.getString(1), rs2.getInt(2), rs1.getInt(2)));
+            }
         }
         return data;
     }
@@ -134,6 +148,7 @@ public class DataModel {
         return harga;
     }
     
+
     public int nextLaptopID() throws SQLException{
         String sql="SELECT MAX(id) from laptop";
         ResultSet rs = conn.createStatement().executeQuery(sql);

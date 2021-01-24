@@ -20,7 +20,6 @@ public class MainClass extends Application{
     
     public void StartApp() throws IOException{
         
-        
         Parent form = FXMLLoader.load(getClass().getResource("formCust.fxml"));
         Parent menu =  FXMLLoader.load(getClass().getResource("UIFXML.fxml"));
         Parent invoice = FXMLLoader.load(getClass().getResource("InvOrder.fxml"));
@@ -46,8 +45,6 @@ public class MainClass extends Application{
         InvoiceOrder.initModality(Modality.APPLICATION_MODAL);
         InvoiceOrder.initOwner(Menu);
         InvoiceOrder.showAndWait();
-        
-        
         
     }
     
