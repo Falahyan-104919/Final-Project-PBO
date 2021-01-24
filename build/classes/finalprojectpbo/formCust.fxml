@@ -17,7 +17,7 @@
                   <Font size="24.0" />
                </font>
             </Text>
-            <Button fx:id="goMenu" layoutX="206.0" layoutY="92.0" mnemonicParsing="false" onAction="#handleButtonGoMenu" text="Lihat Menu" />
+            <Button fx:id="goMenu" layoutX="206.0" layoutY="92.0" mnemonicParsing="false" onAction="#handleButtonGoMenu" style="-fx-background-color: #0077B6;" text="Lihat Menu" textFill="WHITE" />
          </children>
       </Pane>
       <Text layoutX="255.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HIMAKOM ELECTRONIC CITY" textAlignment="CENTER" wrappingWidth="257.900390625" AnchorPane.leftAnchor="255.0" AnchorPane.rightAnchor="255.099609375">
