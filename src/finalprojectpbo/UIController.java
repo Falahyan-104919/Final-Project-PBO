@@ -1,17 +1,21 @@
 package finalprojectpbo;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -19,13 +23,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 
-/**
- * FXML Controller class
- *
- * @author Falahyan
- */
 public class UIController implements Initializable {
     
     @FXML
@@ -125,13 +123,13 @@ public class UIController implements Initializable {
     private Button menuAddL5;
     
     @FXML
-    private TextField noInvoiceOrder;
+    private Label noInvoiceOrder;
 
     @FXML
-    private TextField nameCustInvoiceOrder;
+    private Label nameCustInvoiceOrder;
     
      @FXML
-    private TextField InvoiceTotalPrice;
+    private Label InvoiceTotalPrice;
 
     @FXML
     private TextField InvoicePay;
@@ -140,7 +138,7 @@ public class UIController implements Initializable {
     private Button InvoiceButtonPay;
 
     @FXML
-    private TextField InvoiceChange;
+    private Label InvoiceChange;
 
     @FXML
     private Button InvoiceButtonExit;
@@ -169,7 +167,6 @@ public class UIController implements Initializable {
     @FXML
     private TableColumn<ListOrder, Integer> InvoiceTableOrderColQty;
 
-
     @FXML
     private Button menuMakeOrder;
 
@@ -180,11 +177,16 @@ public class UIController implements Initializable {
     private Button menuReloadButtonList;
     
     @FXML
-    private Label hallo;
+    private Label hello;
+    
+    @FXML
+    private Label displayWaktu;
+    
+    @FXML
+    private TextField totalOrder;
 
     private DataModel dm;
     private Invoice inv;
-    
     
     @FXML
     void handleButtonAddL1(ActionEvent event) throws SQLException {
@@ -367,27 +369,41 @@ public class UIController implements Initializable {
     }
 
     @FXML
-    void handleButtonGoMenu(ActionEvent event) {
+    void handleButtonGoMenu(ActionEvent event) throws IOException {
         try {
             dm.tambahInvoice(new Invoice(dm.nextInvoiceID(), "NULL", namaCust.getText()));
         } catch (SQLException ex) {
             Logger.getLogger(UIController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("menuOrder.fxml"));
+        Parent root =  loader.load();
+        Scene menu = new Scene(root,1366,768);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setMaximized(true);
+        window.setTitle("HIMAKOM Electronic City");
+        window.setScene(menu);
+        window.show();
+        UIController scene_controller = loader.getController();
+        scene_controller.sayHello(namaCust.getText());
     }
     
     @FXML
-    void handleButtonMakeOrder(ActionEvent event) {
-        ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+    void handleButtonMakeOrder(ActionEvent event) throws IOException, SQLException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("InvOrder.fxml"));
+        Parent invoice = loader.load();
+        Scene Invoice = new Scene(invoice,768,489);
+        Stage InvoiceOrder = (Stage)((Node)event.getSource()).getScene().getWindow();
+        InvoiceOrder.setTitle("Invoice");
+        InvoiceOrder.setScene(Invoice);
+        InvoiceOrder.show();
+        UIController scene_controller = loader.getController();
+        scene_controller.showInvoice();
     } 
 
     @FXML
-    void handleButtonResetList(ActionEvent event) {
-    }
-
-    @FXML
-    void handleReloadButtonList(ActionEvent event) {
-        
+    void handleButtonResetList(ActionEvent event) throws SQLException {
+        dm.resetItems(dm.nextInvoiceID()-1);
+        update();
     }
     
     @FXML
@@ -396,8 +412,8 @@ public class UIController implements Initializable {
     }
 
     @FXML
-    void handleButtonInvoicePay(ActionEvent event) {
-
+    void handleButtonInvoicePay(ActionEvent event) throws IOException, SQLException {
+        InvoiceChange.setText(Integer.toString(Integer.parseInt(InvoicePay.getText())-(dm.getTotalOrder(dm.nextInvoiceID()-1))));
     }
    
     @Override
@@ -407,15 +423,39 @@ public class UIController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(DataModel.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
     
     void update() throws SQLException{
         ObservableList<ListOrder> list_order = dm.getListOrder(dm.nextInvoiceID()-1);
         menuOrderListColItem.setCellValueFactory(new PropertyValueFactory<>("nama_barang"));
         menuOrderListColQty.setCellValueFactory(new PropertyValueFactory<>("jumlah"));
-        menuOrderListColPrice.setCellValueFactory(new PropertyValueFactory<>("harga"));
+        menuOrderListColPrice.setCellValueFactory(new PropertyValueFactory<>("total_harga"));
         menuOrderList.setItems(null);
         menuOrderList.setItems(list_order);
+        totalOrder.setText(Integer.toString(dm.getTotalOrder(dm.nextInvoiceID()-1)));
+    }
+    
+    void sayHello(String nama){
+        hello.setText("Halo, " + nama + ".");
+    }
+    
+    void showInvoice() throws SQLException{
+        displayWaktu.setText(waktu());
+        noInvoiceOrder.setText(Integer.toString(dm.nextInvoiceID()-1));
+        nameCustInvoiceOrder.setText(dm.getNamaInvoice(dm.nextInvoiceID()-1));
+        ObservableList<ListOrder> list_order = dm.getListOrder(dm.nextInvoiceID()-1);
+        InvoiceTableOrderColItem.setCellValueFactory(new PropertyValueFactory<>("nama_barang"));
+        InvoiceTableOrderColQty.setCellValueFactory(new PropertyValueFactory<>("jumlah"));
+        InvoiceTableOrderColPrice.setCellValueFactory(new PropertyValueFactory<>("total_harga"));
+        InvoiceTableOrder.setItems(null);
+        InvoiceTableOrder.setItems(list_order);
+        InvoiceTotalPrice.setText(Integer.toString(dm.getTotalOrder(dm.nextInvoiceID()-1)));
+    }
+    
+    static String waktu(){
+        LocalDateTime waktu = LocalDateTime.now();
+        String waktu_terformat = waktu.format(DateTimeFormatter.ofPattern("HH:mm:ss dd-MM-yyyy"));
+        return waktu_terformat;
     }
 }
+

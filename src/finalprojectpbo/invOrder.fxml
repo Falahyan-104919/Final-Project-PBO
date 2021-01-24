@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -20,22 +21,21 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Text>
-            <Text layoutX="240.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No : " />
-            <TextField fx:id="noInvoiceOrder" disable="true" layoutX="264.0" layoutY="32.0" prefHeight="10.0" prefWidth="95.0">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </TextField>
+            <Text layoutX="240.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No : " />
             <VBox layoutX="5.0" layoutY="57.0" prefHeight="437.0" prefWidth="356.0">
                <children>
                   <Pane prefHeight="30.0" prefWidth="356.0">
                      <children>
-                        <Text layoutX="9.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NAMA : ">
+                        <Text layoutX="9.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CUSTOMER :">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="nameCustInvoiceOrder" disable="true" layoutX="78.0" layoutY="2.0" prefHeight="2.0" prefWidth="276.0" />
+                        <Label fx:id="nameCustInvoiceOrder" alignment="CENTER_RIGHT" layoutX="69.0" layoutY="5.0" prefHeight="21.0" prefWidth="283.0">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
                      </children>
                   </Pane>
                   <Separator prefWidth="200.0" />
@@ -68,7 +68,11 @@
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="InvoiceTotalPrice" disable="true" editable="false" layoutX="121.0" layoutY="1.0" prefHeight="25.0" prefWidth="230.0" />
+                        <Label fx:id="InvoiceTotalPrice" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="120.0" layoutY="5.0" prefHeight="21.0" prefWidth="231.0">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
                      </children>
                   </Pane>
                   <Separator layoutX="10.0" layoutY="271.0" prefWidth="200.0" />
@@ -80,7 +84,7 @@
                            </font>
                         </Text>
                         <TextField fx:id="InvoicePay" layoutX="68.0" layoutY="1.0" prefHeight="25.0" prefWidth="283.0" />
-                        <Button fx:id="InvoiceButtonPay" layoutX="297.0" layoutY="30.0" mnemonicParsing="false" onAction="#handleButtonInvoicePay" style="-fx-background-color: #0077B6;" text="BAYAR" />
+                        <Button fx:id="InvoiceButtonPay" layoutX="306.0" layoutY="29.0" mnemonicParsing="false" onAction="#handleButtonInvoicePay" style="-fx-background-color: #0077B6;" text="Bayar" textFill="WHITE" />
                      </children>
                   </Pane>
                   <Separator layoutX="10.0" layoutY="304.0" prefWidth="200.0" />
@@ -91,13 +95,17 @@
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="InvoiceChange" disable="true" layoutX="101.0" layoutY="1.0" prefHeight="25.0" prefWidth="250.0" />
+                        <Label fx:id="InvoiceChange" alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" layoutX="102.0" layoutY="5.0" prefHeight="21.0" prefWidth="249.0">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
                      </children>
                   </Pane>
                   <Separator layoutX="10.0" layoutY="366.0" prefWidth="200.0" />
                   <Pane prefHeight="30.0" prefWidth="356.0">
                      <children>
-                        <Button fx:id="InvoiceButtonExit" layoutX="133.0" layoutY="6.0" mnemonicParsing="false" onAction="#handleButtonInvoiceExit" style="-fx-background-color: #FF312E;" text="KELUAR">
+                        <Button fx:id="InvoiceButtonExit" layoutX="145.0" layoutY="1.0" mnemonicParsing="false" onAction="#handleButtonInvoiceExit" style="-fx-background-color: #FF312E;" text="Keluar" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -106,7 +114,16 @@
                   </Pane>
                </children>
             </VBox>
-            <Text layoutX="14.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No : " />
+            <Label fx:id="noInvoiceOrder" alignment="CENTER_RIGHT" layoutX="264.0" layoutY="40.0" prefHeight="17.0" prefWidth="95.0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="displayWaktu" layoutX="14.0" layoutY="40.0" prefHeight="17.0" prefWidth="209.0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>
