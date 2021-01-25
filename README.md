@@ -29,11 +29,20 @@ To view the diagrams below install mermaid-diagram plugin at https://github.com/
 
 classDiagram
     
-    Invoice "1"--o"*"  Barang : has
+    Invoice -- ListOrder
+    ListOrder "1"--o"*"  Barang : has
     Barang <|-- Laptop
     Barang <|-- Monitor
     Barang <|-- Printer
     
+    class ListOrder {
+      -String  nama_barang
+      -int jumlah
+      -int total_harga
+      +String nama_barangProperty()
+      +int jumlahProperty()
+      +int total_hargaProperty()
+    }
     class Invoice{
     -int id
     -String customer
@@ -130,7 +139,14 @@ erDiagram
           Barang ||--|| Laptop : is
           Barang ||--|| Monitor : is
           Barang ||--|| Printer : is
-          Barang }|--|| Invoice : has
+          Barang }|--|| ListOrder : has
+          ListOrder ||--|| Invoice
+          
+          class ListOrder {
+            -String  nama_barang
+            -int jumlah
+            -int total_harga
+          }
           class Invoice{
             -int id
             -String customer
@@ -168,8 +184,9 @@ erDiagram
     DataModel <-- UIController
     UIController <.. formCust : Form Control 
     DBHelper <-- DataModel
+    ListOrder -- Invoice : Contain
     Invoice --o DataModel
-     Invoice --o  Barang : has
+    ListOrder --o  Barang : has
     Barang <|-- Laptop
     Barang <|-- Monitor
     Barang <|-- Printer
@@ -219,6 +236,14 @@ erDiagram
         createTable()
     }
 
+    class ListOrder {
+      -StringProperty  nama_barang
+      -IntegerProperty jumlah
+      -IntegerProperty total_harga
+      +StringProperty nama_barangProperty()
+      +IntegerProperty jumlahProperty()
+      +IntegerProperty total_hargaProperty()
+    }
     
     class Invoice{
         -IntegerProperty id
