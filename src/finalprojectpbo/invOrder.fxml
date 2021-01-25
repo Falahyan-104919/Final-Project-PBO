@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="489.0" prefWidth="768.0" style="-fx-background-color: ff9500;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finalprojectpbo.UIController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="489.0" prefWidth="768.0" style="-fx-background-color: ff9500;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finalprojectpbo.UIController">
    <children>
       <Pane layoutX="121.0" layoutY="91.0" prefHeight="375.0" prefWidth="550.0" style="-fx-background-color: ffaa00;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -54,8 +54,8 @@
                         <TableView fx:id="InvoiceTableOrder" layoutX="2.0" layoutY="2.0" prefHeight="195.0" prefWidth="355.0">
                           <columns>
                             <TableColumn fx:id="InvoiceTableOrderColItem" prefWidth="166.0" text="ITEM" />
-                            <TableColumn fx:id="InvoiceTableOrderColPrice" prefWidth="97.0" text="HARGA" />
                               <TableColumn fx:id="InvoiceTableOrderColQty" minWidth="0.0" prefWidth="89.66665649414062" text="JUMLAH" />
+                            <TableColumn fx:id="InvoiceTableOrderColPrice" prefWidth="97.0" text="HARGA" />
                           </columns>
                         </TableView>
                      </children>

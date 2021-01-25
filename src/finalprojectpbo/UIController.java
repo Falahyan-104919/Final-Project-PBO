@@ -369,7 +369,7 @@ public class UIController implements Initializable {
     }
 
     @FXML
-    void handleButtonGoMenu(ActionEvent event) throws IOException {
+    void handleButtonGoMenu(ActionEvent event) throws IOException, SQLException {
         try {
             dm.tambahInvoice(new Invoice(dm.nextInvoiceID(), "NULL", namaCust.getText()));
         } catch (SQLException ex) {
@@ -419,7 +419,7 @@ public class UIController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            dm = new DataModel("MYSQL");
+            dm = new DataModel("SQLITE");
         } catch (SQLException ex) {
             Logger.getLogger(DataModel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -440,6 +440,7 @@ public class UIController implements Initializable {
     }
     
     void showInvoice() throws SQLException{
+        dm.setWaktu(dm.nextInvoiceID()-1, waktu());
         displayWaktu.setText(waktu());
         noInvoiceOrder.setText(Integer.toString(dm.nextInvoiceID()-1));
         nameCustInvoiceOrder.setText(dm.getNamaInvoice(dm.nextInvoiceID()-1));
@@ -458,4 +459,3 @@ public class UIController implements Initializable {
         return waktu_terformat;
     }
 }
-

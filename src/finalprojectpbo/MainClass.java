@@ -18,17 +18,12 @@ public class MainClass extends Application{
     }
     
     public void StartApp() throws IOException{
-        
         Parent form = FXMLLoader.load(getClass().getResource("formCust.fxml"));
-        Parent invoice = FXMLLoader.load(getClass().getResource("InvOrder.fxml"));
-        
         Stage formCust = new Stage();
         formCust.setTitle("Daftar");
         Scene Customer = new Scene(form,768,500);
         formCust.setScene(Customer);
         formCust.show();
-        
-        
     }
     
     public static void main(String[] args) {

@@ -12,7 +12,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class DataModel {
-    public final Connection conn;
+    public  Connection conn;
 
     public DataModel(String driver) throws SQLException {
         this.conn = DBHelper.getConnection(driver);
@@ -141,6 +141,12 @@ public class DataModel {
         }
         return nama;
     }
+    
+    public void setWaktu(int id_invoice, String waktu) throws SQLException{
+        String sql="UPDATE invoice SET waktu = \'"+waktu+"\' WHERE id="+id_invoice;
+        conn.createStatement().executeUpdate(sql);
+    }
+ 
     public void resetItems(int id_invoice) throws SQLException{
         String sql="DELETE FROM items WHERE id_invoice="+id_invoice;
         conn.createStatement().executeUpdate(sql);
