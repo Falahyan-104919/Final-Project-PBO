@@ -29,8 +29,8 @@ To view the diagrams below install mermaid-diagram plugin at https://github.com/
 
 classDiagram
     
-    Invoice "1"--"1"ListOrder
-    ListOrder "1"--o"*"  Barang : has
+    Invoice "1"--o"*" ListOrder
+    ListOrder "1"--"1" Barang : has
     Barang <|-- Laptop
     Barang <|-- Monitor
     Barang <|-- Printer
@@ -173,6 +173,7 @@ erDiagram
 # Design Class Diagram for JavaFX and Database
     
   classDiagram
+  
       DataModel <-- UIController
       UIController <.. formCust : Form Control
       UIController <.. menuOrder : Form Control 
