@@ -29,7 +29,7 @@ To view the diagrams below install mermaid-diagram plugin at https://github.com/
 
 classDiagram
     
-    Invoice "1"--"1"Order
+    Invoice "1"--"1"ListOrder
     ListOrder "1"--o"*"  Barang : has
     Barang <|-- Laptop
     Barang <|-- Monitor
