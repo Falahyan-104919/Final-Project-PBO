@@ -4,6 +4,8 @@ Anggota Kelompok:
 - 1917051045 Muhammad Bintang Firdaus
 - 1917051049 Falahyan
 
+Video Penjelasan : https://youtu.be/LlbLU_-IPdU
+
 
 # Invoice System
 >Sistem dapat digunakan untuk perekaman Invoice transaksi penjualan barang elektronik yang terdiri dari Laptop,Monitor,Printer.Setiap Invoice dapat memiliki 1 atau lebih Item
